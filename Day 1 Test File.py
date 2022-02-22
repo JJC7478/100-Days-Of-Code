@@ -10,5 +10,6 @@ print("Hello" + "John")
 print("Hello " + input("What is your name?"))
 
 # to get string length, use len() function
-s = input("What is your name?")
-print(len(s))
+name = input("What is your name?")
+length = len(name)
+print(length)
