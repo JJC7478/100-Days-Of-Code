@@ -18,7 +18,7 @@ ____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
 ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/[      ]
 *******************************************************************************''')
-print("Welcome to Treasure Island! \n Your Mission is to find the treasure.")
+print("Welcome to Treasure Island!\n Your Mission is to find the treasure.")
 
 direction = input("Left or right?\n")
 lower_direction = direction.lower()
@@ -26,22 +26,22 @@ if lower_direction == "right":
     print("Fall into a hole. Game Over.")
     input("Press any key to exit")
 elif lower_direction == "left":
-    action = input("Swim or wait?")
+    action = input("Swim or wait?\n")
     lower_action = action.lower()
     if lower_action != "wait":
-        print("Attacked by trout. \n Game Over.")
+        print("Attacked by trout.\n Game Over.")
         input("Press any key to exit")
     elif lower_action == "wait":
-        door = input("Which Door? Red, Blue, or Yellow?")
+        door = input("Which Door? Red, Blue, or Yellow?\n")
         lower_door = door.lower()
         if lower_door == "yellow":
             print("You Win!")
             input("Press any key to exit")
         elif lower_door == "red":
-            print("Burned by fire. \n Game Over.")
+            print("Burned by fire.\n Game Over.")
             input("Press any key to exit")
         elif lower_door == "blue":
-            print("Eaten by beasts. \n Game Over.")
+            print("Eaten by beasts.\n Game Over.")
             input("Press any key to exit")
 else:
     print("Game Over.")
