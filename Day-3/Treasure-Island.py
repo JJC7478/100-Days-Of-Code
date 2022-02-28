@@ -20,25 +20,31 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 *******************************************************************************''')
 print("Welcome to Treasure Island! \n Your Mission is to find the treasure.")
 
-direction = input("Left or right?")
+direction = input("Left or right?\n")
 lower_direction = direction.lower()
 if lower_direction == "right":
     print("Fall into a hole. Game Over.")
+    input("Press any key to exit")
 elif lower_direction == "left":
     action = input("Swim or wait?")
     lower_action = action.lower()
     if lower_action != "wait":
         print("Attacked by trout. \n Game Over.")
+        input("Press any key to exit")
     elif lower_action == "wait":
         door = input("Which Door? Red, Blue, or Yellow?")
         lower_door = door.lower()
         if lower_door == "yellow":
             print("You Win!")
+            input("Press any key to exit")
         elif lower_door == "red":
             print("Burned by fire. \n Game Over.")
+            input("Press any key to exit")
         elif lower_door == "blue":
             print("Eaten by beasts. \n Game Over.")
+            input("Press any key to exit")
 else:
     print("Game Over.")
+    input("Press any key to exit")
 
 
