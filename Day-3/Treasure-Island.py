@@ -22,28 +22,23 @@ print("Welcome to Treasure Island! \n Your Mission is to find the treasure.")
 
 direction = input("Left or right?")
 lower_direction = direction.lower()
-if lower_direction != "left":
+if lower_direction == "right":
     print("Fall into a hole. Game Over.")
-    quit()
-
-action = input("Swim or wait?")
-lower_action = action.lower()
-if lower_action != "wait":
-    print("Attacked by trout. \n Game Over.")
-    quit()
-
-door = input("Which Door? Red, Blue, or Yellow?")
-lower_door = door.lower()
-if lower_door == "yellow":
-    print("You Win!")
-elif lower_door == "red":
-    print("Burned by fire. \n Game Over.")
-    quit()
-elif lower_door == "blue":
-    print("Eaten by beasts. \n Game Over.")
-    quit()
+elif lower_direction == "left":
+    action = input("Swim or wait?")
+    lower_action = action.lower()
+    if lower_action != "wait":
+        print("Attacked by trout. \n Game Over.")
+    elif lower_action == "wait":
+        door = input("Which Door? Red, Blue, or Yellow?")
+        lower_door = door.lower()
+        if lower_door == "yellow":
+            print("You Win!")
+        elif lower_door == "red":
+            print("Burned by fire. \n Game Over.")
+        elif lower_door == "blue":
+            print("Eaten by beasts. \n Game Over.")
 else:
     print("Game Over.")
-    quit()
 
 
