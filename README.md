@@ -8,7 +8,7 @@ I began learning how to use the print(), input() and len() functions in order to
 
 Using this knowledge, I was able to create a Band Name Generator, which allowed the user to generate a band name based on the city they're from and their pet's name.
 
-*See Band-Name-Generator.py for details*
+*See Band-Name-Generator.py for details.*
 
 ## Day 2
 
@@ -17,7 +17,7 @@ Expanding upon using the functions I previously learned, I learned about several
 
 This culminated into building a tip calculator. The tip calculator takes in the total bill of an order, the tip percentage, the amount of people to split the bill into, and produces the amount each person should pay towards the bill and the tip. This involves converting string inputs into floats, performing mathematical calculations, and converting them back into strings to get the split result.
 
-*See Tip-Calculator.py for details*
+*See Tip-Calculator.py for details.*
 
 ## Day 3
 
@@ -47,7 +47,7 @@ These programs built up to creating a Treasure Map which determined where the us
 
 I began learning how to use for loops for the first time, specifically how to use them with lists. I also learned how to use the range() function with for loops.
 
-With this, I created several programs, one being the "Average Student Height Calculator" which cycled through a list of student heights and calculated the average. I also made a high score calculator which determined which student got the highest score from a list of test scores. Finally, I solved the FizzBuzz test, a common coding challenge that takes numbers 1-100 and prints "Fizz" for numbers divisible by 3, "Buzz" for numbers divisible by 5, and "Fizzbuzz" for numbers divisible by both 3 and 5.
+With this, I created several mini programs, one being the "Average Student Height Calculator" which cycled through a list of student heights and calculated the average. I also made a high score calculator which determined which student got the highest score from a list of test scores. Finally, I solved the FizzBuzz test, a common coding challenge that takes numbers 1-100 and prints "Fizz" for numbers divisible by 3, "Buzz" for numbers divisible by 5, and "Fizzbuzz" for numbers divisible by both 3 and 5.
 
 *See Average-Student-Height-Calculator.py, Highest-Score.py, and FizzBuzz.py for details.*
 
@@ -63,3 +63,32 @@ This was where I first learned how to create basic functions and use while loops
 
 ## Day 7
 
+This day I worked on "Hangman", a program that plays the popular game Hangman. This project served more as a test and review for all the knowledge I've gained thus far, including different data types such as lists and strings, performing different mathematical operatons, randomization, modules, and for and while loops. The program begins with randomly choosing one word from a large list of words as well as generating a list with a number of undersccores ("_") corresponding to the number of letters in the random chosen word. Then, upon input where the player guesses a letter belonging to the randomly chosen word, the program cycles through each letter in the word to find a match. If the guessed letter is not in the chosen word, the player loses a life out of 6 lives to start with, which is reflected via ASCII art depicting the 'hangman' character becoming more complete as the player loses more lives. Once the player is out of lives, the game ends and they lose. Alternatively, if the player guesses all the letters of the word before losing their lives, they win.
+
+*See Hangman.py for details*
+
+## Day 8
+
+Previously, I was only able to use simple functions without any inputs nor outputs. However, I decided to delve deeper into the versatility of using functions, which began by including inputs. I learned more about functions with inputs, such as positional and keyword arguments, utilizing multiple inputs, and creating more efficient and flexible code.
+
+To put my knowledge to the test, I created two mini programs. The first was a paint area calculator, which calculated the amount of paint cans one would need to cover a surface of a specific height and width based on the coverage of each paint can. I also created a prime number checker which checked if an inputted number was a prime number or not.
+
+*See Paint-Area-Calculator.py and Prime-Number-Checker.py for details.*
+
+Eventually, I was able to build upon using fucntions with inputs by creating a Caesar Cipher program. This program encoded/decoded user text based on a chosen shift number. This shift number indicated the number of times each letter was shifted forwards (encoding) or backwards (decoding). By taking the chosen text, shift number, and shift direction, the Caesar Cipher program uses a function with those inputs to encode/decode user text.
+
+*See Caesar-Cipher.py for details.*
+
+## Day 9
+
+I began learning about a new data type called dictionaries. These are pieces of data that have two components: a key and a value. While practicing with dictionaries, I learned how to create them, retrieve dictionary items, add new items, edit dictionary items, wipe them, loop through items, and nesting lists and other dictionaries in them as well as nesting dictionaries in lists.
+
+As usual, I practiced using dictionaries by creating mini programs. One was a grading program which took data from an existing dictionary containing student scores and created a new dictionary that assigned students to a tier based on those scores. For example, students that scored above 90 were graded "Outstanding" while scores above 70 and below 81 were "Acceptable". Another was a travel log which allowed dictionaries containing the country visited, the number of visits, and cities visited to be added to a travel log list.
+
+*See Grading-Program.py and Travel-Log.py for details.*
+
+To cap off what I learned, I created a Secret Auction program. This allows for users to bid on an item without them knowing each other's bids until the end of the bidding session. Then, the highest bidder is determined and wins the auction. To elaborate, the program creates a list where a function adds dictionaries of each bidder's name and bid amount. Then, the program cycles through each dictionary's bids to determine the highest the bid and, in turn, the auction winner.
+
+*See Secret-Auction-Program.py for details*
+
+## Day 10
