@@ -1,5 +1,10 @@
 import random
-
+import os
+def clearConsole():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+        command = 'cls'
+    os.system(command)
 
 game_start = True
 while game_start:
@@ -52,6 +57,7 @@ while game_start:
     play_again = input("Would you like to play again? Type 'y' if yes or 'n' to exit: ")
     if play_again == "n": 
         game_start = False
+    clearConsole()
 
 input("Press ENTER to exit")
         
