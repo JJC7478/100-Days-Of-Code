@@ -50,10 +50,10 @@ def blackjack():
                 new_player_card = random.choice(cards)
                 player_cards.append(new_player_card)
                 player_score = add(first_player_card, new_player_card)
-                if cpu_score > 22:
-                    for card in range(len(cpu_cards)):
-                        if cpu_cards[card] == 11:
-                            cpu_cards[card] = 1
+                if player_score > 22:
+                    for card in range(len(player_cards)):
+                        if player_cards[card] == 11:
+                            player_cards[card] = 1
                 if player_score > 21 or player_score == 21:
                     in_play = False
                 else:
@@ -97,7 +97,7 @@ def blackjack():
 
         print(f"Your cards: {player_cards}, final score: {player_score}")
         print(f"CPU cards: {cpu_cards}, cpu score: {cpu_score}")
-        replay = input("Would you like to play again? Type 'y' to play again or 'n' to exit: ")
+        replay = input("Would you like to play again? Type 'y' to play again or 'n' to stop playing: ")
         if replay == 'y':
             game_start = False
             clearConsole()
