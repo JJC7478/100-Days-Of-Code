@@ -18,7 +18,8 @@ def blackjack():
 
     print(logo)
     while game_start:
-
+        
+        #Player gets dealt hand of two cards
         player_cards = []
         first_player_card = random.choice(cards)
         player_cards.append(first_player_card)
@@ -28,7 +29,7 @@ def blackjack():
         print(f"Your cards: {player_cards}, current score: {player_score}")
 
 
-
+        #CPU gets dealt hand of two cards
         cpu_cards = []
         first_cpu_card = random.choice(cards)
         cpu_cards.append(first_cpu_card)
@@ -37,6 +38,9 @@ def blackjack():
         cpu_score = add(first_cpu_card, second_cpu_card)
         print(f"First CPU card: {first_cpu_card}")
 
+        #Player given option to add another card to their hand if blackjack not reached
+        #If 'y' selected, player 'hits' or adds another card to their hand
+        #If 'n' is selected, player stays with their current hand
         if player_score < 21:
             in_play = True
         while in_play == True:
@@ -57,7 +61,8 @@ def blackjack():
             else:
                 in_play = False
         
-        while cpu_score < 17 and player_score != 21:
+        #CPU is dealt cards until its hand equals 17 or above
+        while cpu_score < 17:
             first_cpu_card = cpu_score
             new_cpu_card = random.choice(cards)
             cpu_cards.append(new_cpu_card)
@@ -66,6 +71,14 @@ def blackjack():
                 for card in range(len(cpu_cards)):
                     if cpu_cards[card] == 11:
                         cpu_cards[card] = 1
+
+        #Compares scores of player and CPU
+        #Player Blackjack == Win
+        #Player and CPU Blackjack == Lose
+        #Player hand > 21 == Lose
+        #CPU hand > 21 and player hand <= 21 == Win
+        #Player hand > CPU hand == Win
+        #CPU hand < player hand == Lose
 
         if cpu_score == 21:
             print(f"You Lose. CPU Blackjack.")
