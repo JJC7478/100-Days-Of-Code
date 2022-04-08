@@ -1,17 +1,13 @@
 import random
 
 
-number_list = []
-for n in range(1,101):
-    number_list.append(n)
-
 game_start = True
 while game_start:
     def number_picker():
 
         """Picks a random number from 1-100"""
 
-        chosen_number = random.choice(number_list)
+        chosen_number = random.randint(1,100)
         return chosen_number
 
     def choose_difficulty():
@@ -27,13 +23,12 @@ while game_start:
             lives = 5
             return lives
     
-    lives = choose_difficulty()
 
     def play_game():
 
         """Prompts user to chose a number from 1-100 until they guess it right or are out of lives"""
-        
-        global lives
+
+        lives = choose_difficulty()
         chosen_number = number_picker()
         playing_game = True
         while playing_game:
