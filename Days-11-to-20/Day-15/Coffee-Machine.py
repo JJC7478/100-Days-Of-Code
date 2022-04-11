@@ -1,3 +1,11 @@
+import os
+
+def clearConsole():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+        command = 'cls'
+    os.system(command)
+
 coffee_machine = {
     "Water": 1000,
     "Milk" : 300,
@@ -102,6 +110,7 @@ def make_coffee():
         if refill == 0:
             return
         else:
+            clearConsole()
             make_coffee()
     transaction = transaction_check(coffee)
     if transaction == 0:
@@ -109,6 +118,7 @@ def make_coffee():
     print(f"Enjoy your {coffee}!")
     more_coffee = input("Would you like to order more coffee? Type 'y' if yes or 'n' to exit: ")
     if more_coffee == "y":
+        clearConsole()
         make_coffee()
     else:
         return
