@@ -44,16 +44,23 @@ coffee_strings = {
 resources = ["Water", "Milk", "Coffee"]
 
 def coffee_choice():
+    """Returns the user's coffee choice, or a report of coffee machine resources
+    with the 'report' argument."""
+
     coffee_choice = input("What would you like? (espresso/cappuchino/latte) ")
     if coffee_choice == "report":
         report()
     return coffee_choice
 
 def report():
+    """Prints coffee machine resources."""
+
     for key in coffee_machine:
         print(key, ":", coffee_machine[key])
 
 def calculate_money():
+    """Takes the user's money and calculates the total payment. Returns total user payment."""
+
     print("Please insert coins.")
     quarters = int(input("How many quarters? ")) * 0.25
     dimes = int(input("How many dimes? ")) * 0.10
@@ -64,6 +71,8 @@ def calculate_money():
     return user_cash
 
 def transaction_check(coffee_pick):
+    """Calculates user's payment for coffee based on their selection."""
+
     coffee_ref = coffee_strings[coffee_pick]
     coffee_price = coffee_ref["Money"]
     user_money = calculate_money()
@@ -77,6 +86,8 @@ def transaction_check(coffee_pick):
     
 
 def resource_check(coffee_pick):
+    """Checks for sufficient resources to make the user's coffee."""
+
     user_coffee = coffee_strings[coffee_pick]
     for resource in resources:
         if coffee_machine[resource] < user_coffee[resource]:
@@ -86,6 +97,8 @@ def resource_check(coffee_pick):
             return user_coffee
 
 def refill():
+    """Resets coffee machine resources to default values."""
+
     refill = input("Would you like to refill the coffee machine? Type 'y' to refill and 'n' if not: ")
     if refill == 'y':
         for resource in coffee_machine:
@@ -99,6 +112,8 @@ def refill():
         return 0
 
 def make_coffee():
+    """Uses coffee machine to create user's choice of coffee and calculates
+    costs."""
     coffee = coffee_choice()
     if coffee == "report":
         make_coffee()
