@@ -117,8 +117,10 @@ def make_coffee():
     coffee = coffee_choice()
     if coffee == "report":
         make_coffee()
+    
     coffee_price = (coffee_strings[coffee])["Money"]
     print(f"A(n) {coffee} is {coffee_price}.")
+
     resources = resource_check(coffee)
     if resources == 0:
         refill()
@@ -127,10 +129,12 @@ def make_coffee():
         else:
             clearConsole()
             make_coffee()
+
     transaction = transaction_check(coffee)
     if transaction == 0:
         make_coffee()
     print(f"Enjoy your {coffee}!")
+    
     more_coffee = input("Would you like to order more coffee? Type 'y' if yes or 'n' to exit: ")
     if more_coffee == "y":
         clearConsole()
