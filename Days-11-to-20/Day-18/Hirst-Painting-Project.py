@@ -35,8 +35,8 @@ color_list = [(229, 228, 226), (225, 223, 224), (199, 175, 117), (124, 36, 24), 
 tim = t.Turtle()
 tim.penup()
 tim.setpos(-225,-225)
-tim.speed(0)
-t.hideturtle()
+tim.speed("fastest")
+tim.hideturtle()
 
 screen = t.Screen()
 screen.colormode(255)
