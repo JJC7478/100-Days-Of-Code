@@ -1,0 +1,28 @@
+import turtle as t
+MOVE = False
+ALIGNMENT = "center"
+FONT = ('Impact', 18, 'bold')
+
+class Scoreboard(t.Turtle):
+    def __init__(self):
+        super().__init__()
+        self.penup()
+        self.hideturtle()
+        self.setposition(0,270)
+        self.color("white")
+        self.score = 0
+        self.create_score()
+        
+    
+    def create_score(self):
+        self.clear()
+        self.write(arg=f"Score: {self.score}", move=MOVE, align=ALIGNMENT,font=FONT)
+    
+    def add_score(self):
+        self.score += 1
+        self.create_score()
+    
+    def game_over(self):
+        self.clear()
+        self.setposition(0,0)
+        self.write(arg=f"Game Over! Your final score was: {self.score}", move=MOVE, align=ALIGNMENT,font=FONT)
