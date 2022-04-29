@@ -3,6 +3,7 @@ import time
 from paddle import Paddle
 from ball import Ball
 from scoreboard import Scoreboard
+from border import Border
 
 #Creates 800x600 black screen
 screen = t.Screen()
@@ -16,6 +17,11 @@ l_paddle = Paddle((-350, 0))
 ball = Ball()
 r_scoreboard = Scoreboard((400,260))
 l_scoreboard = Scoreboard((-400, 260))
+border = Border((0,-400))
+
+#Draws middle border
+while border.ycor()< 400:
+    border.draw_border()
 
 screen.update()
 
@@ -29,7 +35,7 @@ screen.onkeypress(l_paddle.down, "s")
 game_on = True
 while game_on:
 
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
 
@@ -40,20 +46,24 @@ while game_on:
     #Detect paddle collision
     if ball.distance(r_paddle) < 50 and ball.xcor() > 320:
         ball.bounce_x()
-        
+        ball.increase_speed()
     elif l_paddle.distance(ball) < 50 and ball.xcor() < -320:
         ball.bounce_x()
+        ball.increase_speed()
+        
     
     #Detect right out of bounds
 
     if ball.current_x > 400:
         ball.reset_position()
+        ball.reset_speed()
         ball.bounce_x()
         l_scoreboard.add_score()
 
     #Detect left out of bounds
     if ball.current_x < -400:
         ball.reset_position()
+        ball.reset_speed()
         ball.bounce_x()
         r_scoreboard.add_score()
 
