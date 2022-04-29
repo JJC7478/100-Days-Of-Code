@@ -2,6 +2,7 @@ import turtle as t
 import time
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 
 #Creates 800x600 black screen
 screen = t.Screen()
@@ -13,6 +14,8 @@ screen.tracer(0)
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
 ball = Ball()
+r_scoreboard = Scoreboard((400,260))
+l_scoreboard = Scoreboard((-400, 260))
 
 screen.update()
 
@@ -46,11 +49,13 @@ while game_on:
     if ball.current_x > 400:
         ball.reset_position()
         ball.bounce_x()
+        l_scoreboard.add_score()
 
     #Detect left out of bounds
     if ball.current_x < -400:
         ball.reset_position()
         ball.bounce_x()
+        r_scoreboard.add_score()
 
 
 
