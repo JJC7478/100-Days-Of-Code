@@ -11,18 +11,25 @@ class Scoreboard(t.Turtle):
         self.setposition(0,270)
         self.color("white")
         self.score = 0
+        self.highscore = 0
         self.create_score()
         
     
     def create_score(self):
         self.clear()
-        self.write(arg=f"Score: {self.score}", move=MOVE, align=ALIGNMENT,font=FONT)
+        self.write(arg=f"Score: {self.score} High Score: {self.highscore}", move=MOVE, align=ALIGNMENT,font=FONT)
     
     def add_score(self):
         self.score += 1
         self.create_score()
     
-    def game_over(self):
-        self.clear()
-        self.setposition(0,0)
-        self.write(arg=f"Game Over! Your final score was: {self.score}", move=MOVE, align=ALIGNMENT,font=FONT)
+    def reset(self):
+        if self.score > self.highscore:
+            self.highscore = self.score
+        self.score = 0
+        self.create_score()
+
+    # def game_over(self):
+    #     self.clear()
+    #     self.setposition(0,0)
+    #     self.write(arg=f"Game Over! Your final score was: {self.score}", move=MOVE, align=ALIGNMENT,font=FONT)
