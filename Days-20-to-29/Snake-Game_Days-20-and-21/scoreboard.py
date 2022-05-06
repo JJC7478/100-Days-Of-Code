@@ -1,3 +1,4 @@
+from importlib.resources import contents
 import turtle as t
 MOVE = False
 ALIGNMENT = "center"
@@ -11,7 +12,8 @@ class Scoreboard(t.Turtle):
         self.setposition(0,270)
         self.color("white")
         self.score = 0
-        self.highscore = 0
+        with open("high_score.txt") as file:
+            self.highscore = int(file.read())
         self.create_score()
         
     
@@ -26,6 +28,8 @@ class Scoreboard(t.Turtle):
     def reset(self):
         if self.score > self.highscore:
             self.highscore = self.score
+            with open("high_score.txt", mode="r+") as file:
+                file.write(str(self.highscore))
         self.score = 0
         self.create_score()
 
