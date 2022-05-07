@@ -1,14 +1,11 @@
 with open("./Input/Names/invited_names.txt") as file:
     names = file.readlines()
-    print(names)
 
 names1 = []
 
 for name in names:
     new_name = name.replace("\n", "")
     names1.append(new_name)
-
-print(names1)
 
 for name in names1:
     with open("./Input/Letters/starting_letter.txt", mode="a+") as letter:
