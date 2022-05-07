@@ -12,6 +12,6 @@ for name in names1:
         letter.seek(0)
         txt = letter.read()
         letter_to_name = txt.replace("[name]", f"{name}")
-        with open(f"./Output/ReadyToSend/letter_for_{name}.txt", mode="a+") as draft:
+        with open(f"./Output/ReadyToSend/letter_for_{name}.txt", mode="w+") as draft:
             draft.write(letter_to_name)
 
