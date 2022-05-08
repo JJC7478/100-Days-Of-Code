@@ -34,8 +34,6 @@ while game_is_on:
         y = y_pos[index_int]
         writer.write_state((x,y), answer_state)
         scoreboard.add_score()
-    else:
-        scoreboard.score = 50
     if scoreboard.score == 50:
         exit_game = (screen.textinput(title="Winner!", prompt="You guessed all 50 states! Click anywhere to exit."))
         game_is_on = False

@@ -11,9 +11,9 @@ class Scoreboard(Turtle):
         self.penup()
         self.goto(position)
         self.score = 0
-        self.write(arg=f"{self.score}/50", move=MOVE, align=ALIGN, font=FONT)
+        self.write(arg=f"States guessed: {self.score}/50", move=MOVE, align=ALIGN, font=FONT)
 
     def add_score(self):
         self.clear()
         self.score += 1
-        self.write(arg=f"{self.score}/50", move=MOVE, align=ALIGN, font=FONT)
+        self.write(arg=f"States guessed: {self.score}/50", move=MOVE, align=ALIGN, font=FONT)
