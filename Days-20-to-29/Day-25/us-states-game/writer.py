@@ -2,7 +2,7 @@ from turtle import Turtle, position
 
 MOVE = False
 ALIGN = "center"
-FONT = ("Arial", 12, "bold")
+FONT = ("Arial", 12, "normal")
 
 class Writer(Turtle):
     def __init__(self):
