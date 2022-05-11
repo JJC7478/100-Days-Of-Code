@@ -31,3 +31,25 @@ import pandas
 # passed_students = {name: "passed" for (name, score) in student_scores.items() if score >= 65}
 # print(passed_students)
 
+#Looping through dictionaries
+
+# for (name,status) in passed_students.items():
+#     print(status)
+
+#Loop over pandas dataframe
+
+# student_dict = {
+#     "student": ["Angela", "James", "Lily"],
+#     "score": [56, 78, 98]
+# }
+
+# student_data_frame = pandas.DataFrame(student_dict)
+
+# for (key,value) in student_data_frame.items():
+#     print(key)
+#     print(value)
+
+#Loop through rows of dataframe
+
+# for (index, row) in student_data_frame.iterrows():
+#     print(row.student)
