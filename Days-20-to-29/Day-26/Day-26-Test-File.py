@@ -1,3 +1,5 @@
+import random
+import pandas
 #List comprehension
 
 #Lists
@@ -17,7 +19,15 @@
 
 #Conditional list comprehension
 
-names = ["Alex", "Beth", "Caroline", "Dave", "Eleanor", "Freddie"]
-new_names = [name for name in names if len(name) > 4]
-upper_names = [name.upper() for name in names if len(name) > 4]
-print(upper_names)
+# names = ["Alex", "Beth", "Caroline", "Dave", "Eleanor", "Freddie"]
+# new_names = [name for name in names if len(name) > 4]
+# upper_names = [name.upper() for name in names if len(name) > 4]
+# print(upper_names)
+
+#Dictionary Comprehension
+
+# names = ["Alex", "Beth", "Caroline", "Dave", "Eleanor", "Freddie"]
+# student_scores = {name: random.randint(1,100) for name in names}
+# passed_students = {name: "passed" for (name, score) in student_scores.items() if score >= 65}
+# print(passed_students)
+
