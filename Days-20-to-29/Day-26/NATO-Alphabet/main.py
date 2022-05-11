@@ -1,4 +1,3 @@
-from unicodedata import name
 import pandas
 
 #Creates dictionary of letters and corresponding NATO code words
