@@ -6,10 +6,13 @@ from click import command
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-def add_info():
+def save():
     with open("data.txt", mode="a+") as df:
         df.seek(0)
         df.write(f"{web_entry.get()} | {eu_entry.get()} | {pw_entry.get()}\n")
+    web_entry.delete(0,END)
+    eu_entry.delete(0,END)
+    pw_entry.delete(0,END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -31,7 +34,7 @@ pw_button.grid(column=2, row=3, sticky="EW")
 
 
 #Add Button
-add_button = Button(text="Add", width=36, command=add_info)
+add_button = Button(text="Add", width=36, command=save)
 add_button.grid(column=1, row=4, columnspan=2, sticky="EW")
 
 #Website Text Entry
