@@ -1,9 +1,16 @@
 from tkinter import *
 
+from click import command
+
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+def add_info():
+    with open("data.txt", mode="a+") as df:
+        df.seek(0)
+        df.write(f"{web_entry.get()} | {eu_entry.get()} | {pw_entry.get()}\n")
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 #Window
@@ -24,16 +31,18 @@ pw_button.grid(column=2, row=3, sticky="EW")
 
 
 #Add Button
-add_button = Button(text="Add", width=36)
+add_button = Button(text="Add", width=36, command=add_info)
 add_button.grid(column=1, row=4, columnspan=2, sticky="EW")
 
 #Website Text Entry
 web_entry = Entry(width=35)
 web_entry.grid(column=1, row=1, columnspan=2, sticky="EW")
+web_entry.focus()
 
 #Email/Username Text Entry
 eu_entry = Entry(width=35)
 eu_entry.grid(column=1, row=2, columnspan=2, sticky="EW")
+eu_entry.insert(0, string="johnjonahc@gmail.com")
 
 #Password entry
 pw_entry = Entry(width=32)
