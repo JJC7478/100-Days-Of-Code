@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 from click import command
 
@@ -7,12 +8,26 @@ from click import command
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
-    with open("data.txt", mode="a+") as df:
-        df.seek(0)
-        df.write(f"{web_entry.get()} | {eu_entry.get()} | {pw_entry.get()}\n")
-    web_entry.delete(0,END)
-    eu_entry.delete(0,END)
-    pw_entry.delete(0,END)
+
+    website = web_entry.get()
+    email = eu_entry.get()
+    password = pw_entry.get()
+
+    if len(website) == 0 or len(email) == 0 or len(password) == 0:
+        messagebox.showerror(title="Missing Fields", message="You left one or more fields blank. Please fill them in before proceeding.")
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=
+        f"These are the details entered: \nEmail: {email}\n"
+        f"Password: {password} \nIs it ok to save?")
+
+        if is_ok:
+            with open("data.txt", mode="a+") as df:
+                df.seek(0)
+                df.write(f"{website} | {email} | {password}\n")
+            messagebox.showinfo(title="Information Added", message="Your information has been added.")
+            web_entry.delete(0,END)
+            eu_entry.delete(0,END)
+            pw_entry.delete(0,END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
