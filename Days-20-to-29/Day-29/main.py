@@ -1,10 +1,29 @@
 from tkinter import *
 from tkinter import messagebox
-
-from click import command
+from random import randint, choice, shuffle
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def generate_password():
+    pw_entry.delete(0,END)
+
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+
+    random_letters = [choice(letters) for letter in range(randint(8, 10))]
+    random_symbols = [choice(symbols) for symbol in range(randint(2, 4))]
+    random_numbers = [choice(numbers) for number in range(randint(2, 4))]
+
+    char_list = [random_letters, random_symbols, random_numbers]
+    char_list = [char for sublist in char_list for char in sublist]
+
+    shuffle(char_list)
+
+    password = "".join(char_list)
+
+    pw_entry.insert(0,password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
@@ -44,7 +63,7 @@ canvas.create_image(100,100, image=logo)
 canvas.grid(column=1, row=0)
 
 #Generate Password Button
-pw_button = Button(text="Generate Password")
+pw_button = Button(text="Generate Password", command=generate_password)
 pw_button.grid(column=2, row=3, sticky="EW")
 
 
