@@ -4,6 +4,8 @@ from random import randint, choice, shuffle
 import pyperclip
 import json
 
+# --------------------------------- SEARCH -------------------------------------- #
+
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
@@ -77,6 +79,10 @@ logo = PhotoImage(file="Password-Manager/logo.png")
 canvas.create_image(100,100, image=logo)
 canvas.grid(column=1, row=0)
 
+#Search Button
+search_button = Button(text="Search")
+search_button.grid(column=2, row=1, sticky="EW")
+
 #Generate Password Button
 pw_button = Button(text="Generate Password", command=generate_password)
 pw_button.grid(column=2, row=3, sticky="EW")
@@ -87,8 +93,8 @@ add_button = Button(text="Add", width=36, command=save)
 add_button.grid(column=1, row=4, columnspan=2, sticky="EW")
 
 #Website Text Entry
-web_entry = Entry(width=35)
-web_entry.grid(column=1, row=1, columnspan=2, sticky="EW")
+web_entry = Entry(width=32)
+web_entry.grid(column=1, row=1, columnspan=1, sticky="W")
 web_entry.focus()
 
 #Email/Username Text Entry
