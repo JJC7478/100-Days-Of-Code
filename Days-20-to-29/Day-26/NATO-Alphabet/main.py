@@ -11,5 +11,6 @@ nato_dict = {value.letter: value.code for (key,value) in nato_alphabet.iterrows(
 
 new_word = input("Enter a word: ").upper()
 code_words = [code_word for letter in new_word for (key,code_word) in nato_dict.items() if letter == key]
-
+if code_words == []:
+    raise ValueError("Sorry, letters in the alphabet only")
 print(code_words)
