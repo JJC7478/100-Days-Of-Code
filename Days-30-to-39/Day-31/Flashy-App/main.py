@@ -5,9 +5,16 @@ import random
 BACKGROUND_COLOR = "#B1DDC6"
 FONT_NAME = "Arial"
 #--------------------------- Word Generation ----------------------------------------#
-word_list = pandas.read_csv("Flashy-App/data/french_words.csv")
-french_words = word_list.to_dict(orient="records")
-current_card = {}
+try:
+    word_list = pandas.read_csv("Flash-App/data/words_to_learn.csv")
+except FileNotFoundError:
+    word_list = pandas.read_csv("Flashy-App/data/french_words.csv")
+    french_words = word_list.to_dict(orient="records")
+else:
+    french_words = word_list.to_dict(orient="records")
+finally:
+    current_card = {}
+    words_to_learn = []
 
 def next_word():
     global current_card, card_counter
@@ -29,13 +36,14 @@ def switch_side():
     english_word = current_card["English"]
     canvas.itemconfig(word_text, text=f"{english_word}", fill="white")
 
-#---------------------------- Word Removal and Storage ------------------------------#
+#---------------------------- Word Removal ------------------------------------------#
 def remove_word():
+    past_card = current_card
     next_word()
-    french_words.remove(current_card)
-    print(len(french_words))
-    
-
+    try:
+        french_words.remove(past_card)
+    except ValueError:
+        pass
 
 #---------------------------------- UI ----------------------------------------------#
 #Window
@@ -65,8 +73,10 @@ right_img = PhotoImage(file="Flashy-App/images/right.png")
 right_button = Button(image=right_img, highlightthickness=0, command=remove_word)
 right_button.grid(column=1, row=1)
 
-
-
-
-
 window.mainloop()
+#-------------------------- Words to Learn CSV -------------------------------------#
+
+words_to_learn = french_words
+df = pandas.DataFrame(words_to_learn)
+df.to_csv("Flashy-App/data/words_to_learn.csv", index=False)
+print(df)
