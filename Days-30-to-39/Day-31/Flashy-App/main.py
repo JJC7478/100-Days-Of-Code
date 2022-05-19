@@ -1,3 +1,4 @@
+from textwrap import fill
 from tkinter import *
 import pandas
 import random
@@ -7,19 +8,28 @@ FONT_NAME = "Arial"
 #--------------------------- Word Generation ----------------------------------------#
 word_list = pandas.read_csv("Flashy-App/data/french_words.csv")
 french_words = word_list.to_dict(orient="records")
+current_card = {}
 
 def next_word():
-    word_choice = random.choice(french_words)
-    french_word = word_choice["French"]
-    english_word = word_choice["English"]
+    global current_card, card_counter
+    window.after_cancel(card_counter)
+    current_card = random.choice(french_words)
+    french_word = current_card["French"]
 
-    canvas.itemconfig(word_text, text=f"{french_word}")
-    window.after(3000, switch_side)
+    canvas.itemconfig(card_img, image=front_img)
+    canvas.itemconfig(language_text, text="French", fill="black")
+    canvas.itemconfig(word_text, text=f"{french_word}", fill="black")
+    card_counter = window.after(3000, switch_side)
+    
 
 #---------------------------- Card Switch -------------------------------------------#
 def switch_side():
     canvas.itemconfig(card_img, image= back_img)
     canvas.itemconfig(language_text, text="English", fill="white")
+
+    english_word = current_card["English"]
+    canvas.itemconfig(word_text, text=f"{english_word}", fill="white")
+    
 
 
 #---------------------------------- UI ----------------------------------------------#
@@ -37,6 +47,8 @@ card_img = canvas.create_image(400,263, image=front_img)
 language_text = canvas.create_text(400, 150, text="French", font=(FONT_NAME, 40, "italic"))
 word_text = canvas.create_text(400,263, text="Sample", font=(FONT_NAME, 60, "bold"))
 canvas.grid(column=0, row=0, columnspan=2)
+
+card_counter = window.after(3000, switch_side)
 
 #Wrong Button
 wrong_img = PhotoImage(file="Flashy-App/images/wrong.png")
