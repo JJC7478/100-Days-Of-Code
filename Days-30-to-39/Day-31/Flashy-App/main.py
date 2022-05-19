@@ -19,7 +19,7 @@ def next_word():
 #---------------------------- Card Switch -------------------------------------------#
 def switch_side():
     canvas.itemconfig(card_img, image= back_img)
-    canvas.itemconfig(language_text, text="English")
+    canvas.itemconfig(language_text, text="English", fill="white")
 
 
 #---------------------------------- UI ----------------------------------------------#
