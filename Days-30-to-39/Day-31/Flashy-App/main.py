@@ -1,4 +1,3 @@
-from textwrap import fill
 from tkinter import *
 import pandas
 import random
@@ -29,6 +28,12 @@ def switch_side():
 
     english_word = current_card["English"]
     canvas.itemconfig(word_text, text=f"{english_word}", fill="white")
+
+#---------------------------- Word Removal and Storage ------------------------------#
+def remove_word():
+    next_word()
+    french_words.remove(current_card)
+    print(len(french_words))
     
 
 
@@ -57,7 +62,7 @@ wrong_button.grid(column=0, row=1)
 
 #Right Button
 right_img = PhotoImage(file="Flashy-App/images/right.png")
-right_button = Button(image=right_img, highlightthickness=0, command=next_word)
+right_button = Button(image=right_img, highlightthickness=0, command=remove_word)
 right_button.grid(column=1, row=1)
 
 
