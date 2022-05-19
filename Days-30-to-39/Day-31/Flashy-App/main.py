@@ -33,7 +33,10 @@ def switch_side():
     canvas.itemconfig(card_img, image= back_img)
     canvas.itemconfig(language_text, text="English", fill="white")
 
-    english_word = current_card["English"]
+    try:
+        english_word = current_card["English"]
+    except KeyError:
+        english_word = "English Word"
     canvas.itemconfig(word_text, text=f"{english_word}", fill="white")
 
 #---------------------------- Word Removal ------------------------------------------#
@@ -58,7 +61,7 @@ front_img = PhotoImage(file="Flashy-App/images/card_front.png")
 back_img = PhotoImage(file="Flashy-App/images/card_back.png")
 card_img = canvas.create_image(400,263, image=front_img)
 language_text = canvas.create_text(400, 150, text="French", font=(FONT_NAME, 40, "italic"))
-word_text = canvas.create_text(400,263, text="Sample", font=(FONT_NAME, 60, "bold"))
+word_text = canvas.create_text(400,263, text="French Word", font=(FONT_NAME, 60, "bold"))
 canvas.grid(column=0, row=0, columnspan=2)
 
 card_counter = window.after(3000, switch_side)
