@@ -66,15 +66,15 @@ canvas.grid(column=0, row=0, columnspan=2)
 
 card_counter = window.after(3000, switch_side)
 
-#Wrong Button
-wrong_img = PhotoImage(file="Flashy-App/images/wrong.png")
-wrong_button = Button(image=wrong_img, highlightthickness=0, command=next_word)
-wrong_button.grid(column=0, row=1)
+#Unknown Button
+cross_img = PhotoImage(file="Flashy-App/images/wrong.png")
+unknown_button = Button(image=cross_img, highlightthickness=0, command=next_word)
+unknown_button.grid(column=0, row=1)
 
-#Right Button
-right_img = PhotoImage(file="Flashy-App/images/right.png")
-right_button = Button(image=right_img, highlightthickness=0, command=remove_word)
-right_button.grid(column=1, row=1)
+#Known Button
+check_img = PhotoImage(file="Flashy-App/images/right.png")
+known_button = Button(image=check_img, highlightthickness=0, command=remove_word)
+known_button.grid(column=1, row=1)
 
 window.mainloop()
 #-------------------------- Words to Learn CSV -------------------------------------#
