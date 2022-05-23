@@ -8,14 +8,12 @@ info = pandas.read_csv("Birthday-Wisher/birthdays.csv")
 names = info["name"].to_list()
 birthdates = []
 for name in names:
-    birth_year = int(info.year[info["name"] == name])
     birth_month = int(info.month[info["name"] == name])
     birth_day = int(info.day[info["name"] == name])
-    birthdates.append((birth_month, birth_day,birth_year))
+    birthdates.append((birth_month, birth_day))
 
 
 now = dt.datetime.now()
-year = now.year
 day = now.day
 month = now.month
 
@@ -25,12 +23,12 @@ template3 = "Birthday-Wisher/letter_templates/letter_3.txt"
 
 templates = [template1, template2, template3]
 
-current_date = (month, day, year)
+current_date = (month, day)
 test_email = "tomagoman72@gmail.com"
 my_password = "alttomago16969.!"
 
 if current_date in birthdates:
-    name = info["name"][info.month == month][info.day == day][info.year == year].to_string(index=False)
+    name = info["name"][info.month == month][info.day == day].to_string(index=False)
     email = info["email"][info.name == name].to_string(index=False)
 
     with open(random.choice(templates), mode="a+") as letter:
