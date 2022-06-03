@@ -7,12 +7,18 @@ COMPANY_NAME = "Tesla Inc"
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
-API_KEY = os.environ.get("AV_API_KEY")
+AV_API_KEY = os.environ.get("AV_API_KEY")
+NEWS_API_KEY = os.environ.get("NEWS_API_KEY")
 
 stock_params = {
     "function":"TIME_SERIES_DAILY",
     "symbol": STOCK_NAME,
-    "apikey": API_KEY
+    "apikey": AV_API_KEY
+}
+
+news_params = {
+    "apiKey": NEWS_API_KEY,
+    "q": COMPANY_NAME
 }
 
 stock_response = requests.get(url=STOCK_ENDPOINT, params=stock_params)
@@ -20,6 +26,11 @@ stock_response.raise_for_status()
 stock_data = stock_response.json()
 daily_stock_data = stock_data["Time Series (Daily)"]
 daily_list = [{day: value} for (day,value) in daily_stock_data.items()]
+
+news_response = requests.get(url=NEWS_ENDPOINT, params=news_params)
+news_response.raise_for_status()
+news_data = news_response.json()
+print(news_data)
 
     ## STEP 1: Use https://www.alphavantage.co/documentation/#daily
 # When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
@@ -36,7 +47,10 @@ diff = round((abs(yesterday_close - two_day_close)),2)
 percent_diff = round((((yesterday_close-two_day_close)/yesterday_close) * 100),2)
 #TODO 5. - If TODO4 percentage is greater than 5 then print("Get News").
 if percent_diff > 5:
-    print("Get News")
+    news_response = requests.get(url=NEWS_ENDPOINT, params=news_params)
+    news_response.raise_for_status()
+    news_data = news_response.json()
+    
 
     ## STEP 2: https://newsapi.org/ 
     # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
