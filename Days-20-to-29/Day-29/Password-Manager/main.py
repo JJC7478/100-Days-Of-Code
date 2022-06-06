@@ -4,7 +4,7 @@ from random import randint, choice, shuffle
 import pyperclip
 import json
 
-# --------------------------------- SEARCH -------------------------------------- #
+# --------------------------------- SEARCH INFO ---------------------------------- #
 def find_password():
     print("Button is working")
     website = web_entry.get()
