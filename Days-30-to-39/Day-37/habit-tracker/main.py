@@ -41,5 +41,5 @@ pixel_data = {
     "quantity": "1.5"
 }
 
-response = requests.post(url=g1_endpoint, json=body, headers=headers)
+response = requests.post(url=g1_endpoint, json=pixel_data, headers=headers)
 print(response.text)
