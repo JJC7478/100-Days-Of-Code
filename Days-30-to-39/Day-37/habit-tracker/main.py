@@ -55,5 +55,5 @@ pixel_update = {
     "quantity": "1.2"
 }
 
-response = requests.put(url=g1_update_endpoint,json=pixel_update, headers=headers)
-print(response.text)
+# response = requests.put(url=g1_update_endpoint,json=pixel_update, headers=headers)
+# print(response.text)
