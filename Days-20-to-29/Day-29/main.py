@@ -2,25 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import randint, choice, shuffle
 import pyperclip
-import json
 
-# --------------------------------- SEARCH -------------------------------------- #
-def find_password():
-    print("Button is working")
-    website = web_entry.get()
-    try:
-        with open("Password-Manager/data.json", mode="r") as df:
-            data = json.load(df)
-            email = data[website]["email"]
-            password = data[website]["password"]
-    except FileNotFoundError:
-        messagebox.showinfo(title="Missing File", message="No Data File Found")
-    except KeyError:
-        messagebox.showinfo(title="Missing Website", message="No details for the website exists")
-    else:
-        messagebox.showinfo(title=f"{website}", message=f"Email: {email}\nPassword: {password}")
-
-        
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
@@ -51,34 +33,22 @@ def save():
     website = web_entry.get()
     email = eu_entry.get()
     password = pw_entry.get()
-    new_data = {
-        website: {
-            "email": email,
-            "password": password
-        }
-    }
 
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
         messagebox.showerror(title="Missing Fields", message="You left one or more fields blank. Please fill them in before proceeding.")
     else:
-        try:
-            with open("Password-Manager/data.json", mode="r") as df:
-                #Reading old data
-                data = json.load(df)
-        except FileNotFoundError:
-            with open("Password-Manager/data.json", "w") as df:
-                json.dump(new_data, df, indent=4)
-        else:
-            #Updating old data with new data
-            data.update(new_data)
+        is_ok = messagebox.askokcancel(title=website, message=
+        f"These are the details entered: \nEmail: {email}\n"
+        f"Password: {password} \nIs it ok to save?")
 
-            with open("Password-Manager/data.json", "w") as df:
-                #Saving updated data
-                json.dump(new_data, df, indent=4)
-        finally:
+        if is_ok:
+            with open("data.txt", mode="a+") as df:
+                df.seek(0)
+                df.write(f"{website} | {email} | {password}\n")
+            messagebox.showinfo(title="Information Added", message="Your information has been added.")
             web_entry.delete(0,END)
+            eu_entry.delete(0,END)
             pw_entry.delete(0,END)
-
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -90,13 +60,9 @@ window.config(padx=50, pady=50)
 
 #Logo
 canvas = Canvas(width=200, height=200, highlightthickness=0)
-logo = PhotoImage(file="Password-Manager/logo.png")
+logo = PhotoImage(file="logo.png")
 canvas.create_image(100,100, image=logo)
 canvas.grid(column=1, row=0)
-
-#Search Button
-search_button = Button(text="Search", command=find_password)
-search_button.grid(column=2, row=1, sticky="EW")
 
 #Generate Password Button
 pw_button = Button(text="Generate Password", command=generate_password)
@@ -108,8 +74,8 @@ add_button = Button(text="Add", width=36, command=save)
 add_button.grid(column=1, row=4, columnspan=2, sticky="EW")
 
 #Website Text Entry
-web_entry = Entry(width=32)
-web_entry.grid(column=1, row=1, columnspan=1, sticky="W")
+web_entry = Entry(width=35)
+web_entry.grid(column=1, row=1, columnspan=2, sticky="EW")
 web_entry.focus()
 
 #Email/Username Text Entry
