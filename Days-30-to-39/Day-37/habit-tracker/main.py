@@ -58,5 +58,5 @@ pixel_update = {
 # response = requests.put(url=g1_update_endpoint,json=pixel_update, headers=headers)
 # print(response.text)
 
-response = requests.delete(url=g1_update_endpoint, headers=headers)
-print(response.text)
+# response = requests.delete(url=g1_update_endpoint, headers=headers)
+# print(response.text)
